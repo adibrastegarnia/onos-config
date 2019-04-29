@@ -2,7 +2,7 @@
 
 This is a docker VM that runs gNOI implementation supporting the following services:
 
-* *Certificate management* that can be used for be used for certificate installation and rotation. 
+* *Certificate management* that can be used for certificate installation and rotation. 
 
 ## Create the docker image
 ```bash
