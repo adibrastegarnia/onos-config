@@ -71,4 +71,31 @@ docker run --env "GNOI_TARGET=localhost" --env "GNOI_PORT=50002" -p "50002:50002
 ```
 To stop it use "docker kill"
 
+## How to test the gNOI Simulator? 
+
+1. First you should  ssh into any of the targets using the following command:
+```bash
+sudo docker exec -it <Container_ID> /bin/bash
+```
+
+2. From the Docker, you can install  a Certificate and CA Bundle on a target that is in bootstrapping mode, accepting encrypted TLS connections using the following command:
+```bash
+gnoi_cert \  
+     -target_addr localhost:50002  \
+     -target_name "gnoi_localhost_50002" \ 
+     -key certs/client1.key  \
+     -ca certs/client1.crt  \
+     -op provision  \
+     -cert_id provision_cert \  
+     -alsologtostderr
+```
+
+After executing the above command the output will be like the following:
+```bash
+devicesim1_1  | I0429 15:30:53.157156      10 server.go:59] Start Install request.
+devicesim1_1  | I0429 15:30:53.170788      10 server.go:152] Success Install request.
+devicesim1_1  | I0429 15:30:53.170825      10 manager.go:100] Notifying for: 1 Certificates and 1 CA Certificates.
+devicesim1_1  | I0429 15:30:53.170876      10 gnoi_target.go:61] Found Credentials, setting Provisioned state.
+devicesim1_1  | I0429 15:30:53.171599      10 gnoi_target.go:48] Starting gNOI server.
+```
 
