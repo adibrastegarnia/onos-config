@@ -1,0 +1,45 @@
+version: "3"
+services:
+  devicesim1:
+    image: gnoisim:latest
+    environment:
+    - GNOI_TARGET=device1.opennetworking.org
+    networks:
+      simnet:
+        ipv4_address: 172.25.0.11
+        aliases:
+        - device1
+        - device1.opennetworking.org
+    labels:
+      description: "gNOI Simulator Device 1"
+  devicesim2:
+    image: gnoisim:latest
+    environment:
+      - GNOI_TARGET=device2.opennetworking.org
+    networks:
+      simnet:
+        ipv4_address: 172.25.0.12
+        aliases:
+        - device2
+        - device2.opennetworking.org
+    labels:
+      description: "gNOI Simulator Device 2"
+  devicesim3:
+    image: gnoisim:latest
+    environment:
+      - GNOI_TARGET=device3.opennetworking.org
+    networks:
+      simnet:
+        ipv4_address: 172.25.0.13
+        aliases:
+        - device3
+        - device3.opennetworking.org
+    labels:
+      description: "gNOI Simulator Device 3"
+networks:
+  simnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
+

@@ -1,0 +1,27 @@
+version: "3"
+services:
+  devicesim1:
+    image: gnoisim:latest
+    environment:
+      - GNOI_PORT=50002
+    ports:
+      - "50002:50002"
+    labels:
+      description: "gNOI Simulator Device 1"
+  devicesim2:
+    image: gnoisim:latest
+    environment:
+      - GNOI_PORT=50003
+    ports:
+      - "50003:50003"
+    labels:
+      description: "gNOI Simulator Device 2"
+  devicesim3:
+    image: gnoisim:latest
+    environment:
+      - GNOI_PORT=50004
+    ports:
+      - "50004:50004"
+    labels:
+      description: "gNOI Simulator Device 3"
+
