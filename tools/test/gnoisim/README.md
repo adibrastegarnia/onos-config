@@ -71,7 +71,7 @@ docker run --env "GNOI_TARGET=localhost" --env "GNOI_PORT=50002" -p "50002:50002
 ```
 To stop it use "docker kill"
 
-## How to test the gNOI Simulator? 
+## How to test the gNOI simulator? 
 
 1. First you should  ssh into any of the targets using the following command:
 ```bash
@@ -99,3 +99,24 @@ devicesim1_1  | I0429 15:30:53.170876      10 gnoi_target.go:61] Found Credentia
 devicesim1_1  | I0429 15:30:53.171599      10 gnoi_target.go:48] Starting gNOI server.
 ```
 
+3. To get all installed certificate on a provisioned Target, you can run a command like the following:
+```bash
+gnoi_cert \
+     -target_addr localhost:50002  \
+     -target_name "gnoi_localhost_50002" \
+     -key certs/client1.key  \
+     -ca certs/client1.crt  \
+     -op get  \
+     -alsologtostderr
+```
+
+After the executing the above command, the output in the client side should be like: 
+```bash
+I0429 15:45:00.910217      84 gnoi_cert.go:226] GetCertificates:
+{provision_cert: "gnoi_localhost_50002"}
+```
+
+and the the server should report a success message: 
+```
+devicesim1_1  | I0429 15:45:00.909347      10 server.go:292] Success GetCertificates.
+```
