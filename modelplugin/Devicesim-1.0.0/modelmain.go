@@ -32,6 +32,8 @@ var modelData = []*gnmi.ModelData{
     {Name: "openconfig-interfaces",Organization: "OpenConfig working group",Version: "2017-07-14"},{Name: "openconfig-openflow",Organization: "OpenConfig working group",Version: "2017-06-01"},{Name: "openconfig-platform", Organization: "OpenConfig working group",Version: "2016-12-22"},{Name: "openconfig-system", Organization: "OpenConfig working group",Version: "2017-07-06"},
 }
 
+func main() {}
+
 func (m modelplugin) ModelData() (string, string, []*gnmi.ModelData, string) {
 	return modeltype, modelversion, modelData, modulename
 }

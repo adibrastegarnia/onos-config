@@ -9,6 +9,7 @@ build: # @HELP build the Go binaries and run all validations (default)
 build: test
 	export GOOS=linux
 	export GOARCH=amd64
+	export GO111MODULE=on 
 	go build -o build/_output/onos-config ./cmd/onos-config
 	go build -o build/_output/onos ./cmd/onos
 	go build -o build/_output/testdevice.so.1.0.0 -buildmode=plugin ./modelplugin/TestDevice-1.0.0
@@ -26,8 +27,7 @@ coverage: test
 	./build/bin/coveralls-coverage
 
 deps: # @HELP ensure that the required dependencies are in place
-	dep ensure -v
-	bash -c "diff -u <(echo -n) <(git diff Gopkg.lock)"
+	go build -v ./...
 
 lint: # @HELP run the linters for Go source code
 	golint -set_exit_status github.com/onosproject/onos-config/pkg/...

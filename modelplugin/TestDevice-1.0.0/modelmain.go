@@ -32,6 +32,8 @@ var modelData = []*gnmi.ModelData{
     {Name: "test1",Version: "2018-02-20",Organization: "Open Networking Foundation"},
 }
 
+func main() {}
+
 func (m modelplugin) ModelData() (string, string, []*gnmi.ModelData, string) {
 	return modeltype, modelversion, modelData, modulename
 }

@@ -31,6 +31,7 @@ const modulename = "testdevice.so.2.0.0"
 var modelData = []*gnmi.ModelData{
     {Name: "test1",Version: "2019-06-10",Organization: "Open Networking Foundation"},
 }
+func main() {}
 
 func (m modelplugin) ModelData() (string, string, []*gnmi.ModelData, string) {
 	return modeltype, modelversion, modelData, modulename
